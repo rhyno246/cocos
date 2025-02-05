@@ -2,6 +2,7 @@ import { _decorator, CCInteger, Component, director, EventKeyboard, Input, input
 import { Ground } from './Ground';
 import { Result } from './Result';
 import { Bird } from './Bird';
+import { Pipe } from './Pipe';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameController')
@@ -16,15 +17,21 @@ export class GameController extends Component {
         type : Result,
         tooltip : 'this is Result Components'
     })
-
     public result : Result
 
     @property({
         type : Bird,
         tooltip : 'this is Bird Components'
     })
-
     public bird : Bird
+
+
+    @property({
+        type : Pipe,
+        tooltip : 'this is Pipe Components'
+    })
+    public pipe : Pipe
+
 
     @property({
         type : CCInteger
@@ -82,6 +89,10 @@ export class GameController extends Component {
     onReset () {
         this.result?.resetScore();
         this.startGame();
+    }
+
+    passPipe () {
+        this.result.addScore();
     }
 }
 
