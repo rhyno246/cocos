@@ -1,6 +1,6 @@
 import { _decorator, Canvas, Component, director, Node, UITransform, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
-import { GameController } from './GameController';
+import { GameCtr } from './GameCtr';
 
 @ccclass('Ground')
 export class Ground extends Component {
@@ -31,7 +31,7 @@ export class Ground extends Component {
     public tempStartLocation2 = new Vec3;
     public tempStartLocation3 = new Vec3;
 
-    public gameCtrSpeed = new GameController;
+    public gameCtrSpeed = new GameCtr;
 
     public gameSpeed : number;
 

@@ -1,12 +1,12 @@
 import { _decorator, CCInteger, Component, director, EventKeyboard, Input, input , KeyCode, Node  , Sprite} from 'cc';
+const { ccclass, property } = _decorator;
 import { Ground } from './Ground';
 import { Result } from './Result';
 import { Bird } from './Bird';
-import { Pipe } from './Pipe';
-const { ccclass, property } = _decorator;
+import { PipePool } from './PipePool';
 
-@ccclass('GameController')
-export class GameController extends Component {
+@ccclass('GameCtr')
+export class GameCtr extends Component {
     @property({
         type : Ground,
         tooltip : 'this is Ground Components'
@@ -27,10 +27,10 @@ export class GameController extends Component {
 
 
     @property({
-        type : Pipe,
-        tooltip : 'this is Pipe Components'
+        type : PipePool,
+        tooltip : 'this is PipePool Components'
     })
-    public pipe : Pipe
+    public pipeQueue : PipePool
 
 
     @property({
@@ -46,7 +46,6 @@ export class GameController extends Component {
 
     initListener () {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown , this);
-        //touch orr click screen
         this.node.on(Node.EventType.TOUCH_START, ()=> {
             this.bird?.birdFly();
         });
@@ -88,11 +87,16 @@ export class GameController extends Component {
 
     onReset () {
         this.result?.resetScore();
+        this.pipeQueue?.reset();
         this.startGame();
     }
 
     passPipe () {
-        this.result.addScore();
+        this.result?.addScore();
+    }
+
+    createPipe () {
+        this.pipeQueue?.addPool();
     }
 }
 
