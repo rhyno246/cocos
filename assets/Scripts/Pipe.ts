@@ -49,8 +49,8 @@ export class Pipe extends Component {
         this.tempStartLocationUp.y = topHeight;
         this.tempStartLocationDown.y = (topHeight - (gap * 10));
         
-        this.topPipe.setPosition(this.tempStartLocationUp.x, this.tempStartLocationUp.y);
-        this.bottomPipe.setPosition(this.tempStartLocationDown.x, this.tempStartLocationDown.y);
+        this.topPipe.setPosition(this.tempStartLocationUp);
+        this.bottomPipe.setPosition(this.tempStartLocationDown);
     }
 
     update(deltaTime: number){
@@ -65,13 +65,7 @@ export class Pipe extends Component {
         this.topPipe.setPosition(this.tempStartLocationUp);
         this.bottomPipe.setPosition(this.tempStartLocationDown);
         
-        // const poBottom = this.bottomPipe.getPosition();
-        // const newPoBottom = new Vec3(poBottom.x - this.tempSpeed ,poBottom.y, poBottom.z);
-        // this.bottomPipe.setPosition(newPoBottom);
 
-        // const poTop = this.topPipe.getPosition();
-        // const newPoTop = new Vec3(poTop.x - this.tempSpeed ,poTop.y, poTop.z);
-        // this.topPipe.setPosition(newPoTop);
     
         if (this.isPass == false && this.topPipe.position.x <= 0)
         {
